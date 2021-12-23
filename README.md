@@ -4,6 +4,8 @@ Manually adds funds to a 3commas bot's deals using a custom schedule
 Simply choose the bot_id and schedule you would like to run:
 
 ```csharp
+static int botId = 1234567;
+
 //1 usdt for each manual safety order to test with
 static List<decimal> manual_SO_amounts = new List<decimal> { 1m, 1m, 1m, 1m };
 
