@@ -13,7 +13,7 @@ static List<decimal> manual_SO_amounts = new List<decimal> { 1m, 1m, 1m, 1m };
 static List<decimal> manual_SO_drops = new List<decimal> { 1m - .05m, 1m - .13m, 1m - .27m, 1m - .50m };
 ```
 
-The idea is that you could combine this with an 'express' bot for wider averaging down if said bot results in a red bag
+The idea is that you could combine this with an 'express' bot for wider averaging down if said bot results in deals with red bags
 
 
 Instructions:
