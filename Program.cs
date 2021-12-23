@@ -50,7 +50,7 @@ namespace dca_funder
                                 {
                                     Quantity = manual_SO_amounts[i] / (deal.CurrentPrice * manual_SO_drops[i]),
                                     IsMarket = false,
-                                    Rate = deal.CurrentPrice * manual_SO_drops[i], //limit order at 50% discount from current price??
+                                    Rate = deal.CurrentPrice * manual_SO_drops[i],
                                     DealId = deal.Id
                                 };
                                 var res = await api.AddFundsToDealAsync(dafp);
