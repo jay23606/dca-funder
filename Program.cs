@@ -16,11 +16,11 @@ namespace dca_funder
         static int botId = 1234567;
         static XCommasApi api;
 
-        //1 usdt for each manual safety order to test with
-        static List<decimal> manual_SO_amounts = new List<decimal> { 16m, 16m, 16m, 16m };
+        //safety order sizes in usdt
+        static List<decimal> manual_SO_amounts = new List<decimal> { 24m, 32m, 48m, 64m };
 
-        //add 1usdt @ 5% drop, 13% drop, 27% drop, 50% drop from CurrentPrice
-        static List<decimal> manual_SO_drops = new List<decimal> { 1m - .05m, 1m - .10m, 1m - .20m, 1m - .30m };
+        //add SO @ 6% drop, 12% drop, 24% drop, 48% drop from CurrentPrice
+        static List<decimal> manual_SO_drops = new List<decimal> { 1m - .06m, 1m - .12m, 1m - .24m, 1m - .48m };
 
         static void Main() { MainAsync().GetAwaiter().GetResult(); }
         static async Task MainAsync()
