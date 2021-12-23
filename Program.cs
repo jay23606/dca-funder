@@ -17,10 +17,10 @@ namespace dca_funder
         static XCommasApi api;
 
         //1 usdt for each manual safety order to test with
-        static List<decimal> manual_SO_amounts = new List<decimal> { 1m, 1m, 1m, 1m };
+        static List<decimal> manual_SO_amounts = new List<decimal> { 16m, 16m, 16m, 16m };
 
         //add 1usdt @ 5% drop, 13% drop, 27% drop, 50% drop from CurrentPrice
-        static List<decimal> manual_SO_drops = new List<decimal> { 1m - .05m, 1m - .13m, 1m - .27m, 1m - .50m };
+        static List<decimal> manual_SO_drops = new List<decimal> { 1m - .05m, 1m - .10m, 1m - .20m, 1m - .30m };
 
         static void Main() { MainAsync().GetAwaiter().GetResult(); }
         static async Task MainAsync()
@@ -50,11 +50,11 @@ namespace dca_funder
                                 {
                                     Quantity = manual_SO_amounts[i] / (deal.CurrentPrice * manual_SO_drops[i]),
                                     IsMarket = false,
-                                    Rate = deal.CurrentPrice * manual_SO_drops[i],
+                                    Rate = deal.CurrentPrice * manual_SO_drops[i], //limit order at 50% discount from current price??
                                     DealId = deal.Id
                                 };
                                 var res = await api.AddFundsToDealAsync(dafp);
-                                if (res.IsSuccess) Console.WriteLine($"Added manual SO to {deal.BotName}/{deal.Pair} for Quantity: ${dafp.Quantity} @ {dafp.Rate} limit price at {DateTime.Now.ToShortTimeString()}");
+                                if (res.IsSuccess) Console.WriteLine($"Added manual SO to {deal.BotName}/{deal.Pair} for Quantity: {Math.Round(dafp.Quantity, 2)} @ {dafp.Rate} limit price (${Math.Round((decimal)(dafp.Quantity * dafp.Rate), 2)}) at {DateTime.Now.ToShortTimeString()}");
                             }
                             Console.WriteLine("");
                         }
@@ -66,7 +66,7 @@ namespace dca_funder
                     Console.WriteLine("ERROR: " + ex.Message);
                     api = new XCommasApi(key, secret, default, UserMode.Real);
                 }
-                //check for new deals on this bot every minute
+                //update every five minutes
                 await Task.Delay(1000 * 60 * 1);
             }
         }
