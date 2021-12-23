@@ -14,3 +14,8 @@ static List<decimal> manual_SO_drops = new List<decimal> { 1m - .05m, 1m - .13m,
 ```
 
 The idea is that you could combine this with an 'express' bot for wider averaging down if said bot results in a red bag
+
+
+Instructions:
+
+Add files to new C# console program and replace key/secret/botId and also add XCommas.Net from Project->Nuget menu
