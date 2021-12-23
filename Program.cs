@@ -66,7 +66,7 @@ namespace dca_funder
                     Console.WriteLine("ERROR: " + ex.Message);
                     api = new XCommasApi(key, secret, default, UserMode.Real);
                 }
-                //update every five minutes
+                //update every minute
                 await Task.Delay(1000 * 60 * 1);
             }
         }
