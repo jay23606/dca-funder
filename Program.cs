@@ -53,8 +53,10 @@ namespace dca_funder
                                     Rate = deal.CurrentPrice * manual_SO_drops[i],
                                     DealId = deal.Id
                                 };
-                                await api.AddFundsToDealAsync(dafp);
+                                var res = await api.AddFundsToDealAsync(dafp);
+                                if (res.IsSuccess) Console.WriteLine($"Added manual SO to {deal.BotName}/{deal.Pair} for Quantity: ${dafp.Quantity} @ {dafp.Rate} limit price at {DateTime.Now.ToShortTimeString()}");
                             }
+                            Console.WriteLine("");
                         }
                         idx++;
                     }
