@@ -48,7 +48,7 @@ namespace dca_funder
                             {
                                 var dafp = new DealAddFundsParameters
                                 {
-                                    Quantity = manual_SO_amounts[i],
+                                    Quantity = manual_SO_amounts[i] / (deal.CurrentPrice * manual_SO_drops[i]),
                                     IsMarket = false,
                                     Rate = deal.CurrentPrice * manual_SO_drops[i],
                                     DealId = deal.Id
